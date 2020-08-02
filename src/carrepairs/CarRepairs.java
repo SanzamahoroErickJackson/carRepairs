@@ -18,21 +18,35 @@ public class CarRepairs {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Services srvc1 = new Services("Oil_Change",85);
-        Services srvc2 = new Services("Tire_rotation",23.5);
+        garage grg1= new garage("Toyota");
         
-        customer cstm1 = new customer("Faiq");
-        customer cstm2 = new customer("Eshaan");
-        customer cstm3 = new customer("Aliu");
+        grg1.setCore_service("Basic Inspection",50.0);
         
-        cstm2.addService(srvc1);
-        cstm3.addService(srvc2);
+        grg1.addService("Oil Change",85);
+        grg1.addService("Tire rotation",23.5);
         
-        cstm1.addService(srvc1);
-        cstm1.addService(srvc2);
+        grg1.displayGarageServices();
         
-        System.out.println(cstm1.getNom()+" "+cstm1.getCost());
-        System.out.println(cstm2.getNom()+" "+cstm2.getCost());
-        System.out.println(cstm3.getNom()+" "+cstm3.getCost());
+        System.out.println(" ");
+        System.out.println(" ");
+        
+        customer cst1 = new customer("Faiq");
+        cst1.interested(grg1.getServiceCost("Basic Inspection"));
+        cst1.interested(grg1.getServiceCost("Oil Change"));
+        cst1.interested(grg1.getServiceCost("Tire rotation"));
+        System.out.println(cst1.getNom()+" "+cst1.getTotal_Cost());
+        
+        customer cst2 = new customer("Eshaan");
+        cst2.interested(grg1.getServiceCost("Basic Inspection"));
+        cst2.interested(grg1.getServiceCost("Oil Change"));
+        System.out.println(cst2.getNom()+" "+cst2.getTotal_Cost());
+        
+        customer cst3 = new customer("Aliu");
+        cst3.interested(grg1.getServiceCost("Basic Inspection"));
+        cst3.interested(grg1.getServiceCost("Tire rotation"));
+        
+        System.out.println(cst3.getNom()+" "+cst3.getTotal_Cost());
+        
+        
     }
 }

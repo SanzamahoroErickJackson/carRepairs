@@ -12,15 +12,15 @@ import java.util.List;
  *
  * @author Sam
  */
- public class customer extends coreService {
+ public class customer {
      
         private String nom;
-        private List<String> serv_List;
+        private double total_Cost;
         
         public customer(String nom)
         {
             this.nom=nom;
-            this.serv_List = new ArrayList<>();
+            this.total_Cost=0;
         }
         public String getNom()
         {
@@ -30,15 +30,14 @@ import java.util.List;
         {
             this.nom= nom;
         }
-        public void addService(Services c1)
+        
+        public double getTotal_Cost()
         {
-            super.cost +=c1.getCost();
-            this.serv_List.add(c1.getService_name());
+            return total_Cost;
         }
-        public void removeService(Services c1)
+        
+        public void interested(double cost)
         {
-            serv_List.stream().filter((serv1) -> (serv1.equals(c1.getService_name()))).forEachOrdered((_item) -> {
-                super.cost -= c1.getCost();
-            });
+            total_Cost +=cost;
         }
     }
